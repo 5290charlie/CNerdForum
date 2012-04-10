@@ -178,7 +178,11 @@ class User extends CI_Model {
 			'active' => TRUE,
 			'admin' => TRUE
 		);
-		return $this->db->get_where('users', $data);
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->where($data);
+		$this->db->order_by('laston', 'desc');
+		return $this->db->get();
 	}
 
 	function participants()
@@ -187,7 +191,11 @@ class User extends CI_Model {
 			'active' => TRUE,
 			'admin' => FALSE
 		);
-		return $this->db->get_where('users', $data);
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->where($data);
+		$this->db->order_by('laston', 'desc');
+		return $this->db->get();
 	}
 
 	function pending()
@@ -195,7 +203,11 @@ class User extends CI_Model {
 		$data = array(
 			'active' => FALSE
 		);
-		return $this->db->get_where('users', $data);
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->where($data);
+		$this->db->order_by('laston', 'desc');
+		return $this->db->get();
 	}
 
 	function activate($id)

@@ -39,8 +39,8 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 define('UPLOAD_PATH', '/home/charlie/rsa.cmr1.com/public/static/docs/');
 
-define('POSTS_PER_PAGE', 10);
-define('COMMENTS_PER_PAGE', 10);
+define('POSTS_PER_PAGE', 20);
+define('COMMENTS_PER_PAGE', 20);
 
 define('ALLOWED_TAGS', '<p><b><strong><ul><br><hl><span><div>');
 

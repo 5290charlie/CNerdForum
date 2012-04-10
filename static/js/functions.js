@@ -14,6 +14,10 @@ jQuery(document).ready(function() {
 		autoOpen: false,
 		resizable: false
 	});
+	
+	$(window).scroll(function() {
+		clearTimeout(c);
+	});
 
 	updateUserStatus();
 	
@@ -106,13 +110,13 @@ function chat() {
 }
 
 function updateChat() {
-	c = setTimeout("updateChat()", 500);
+	c = setTimeout("updateChat()", 1000);
 	$url = '/ajax/chat';
 	$content = $("#chat-content").html();
 	$.post($url, function(data) {
 		$("#chat-content").html(data);
-//		var elm = document.getElementById('chat-content');
-//		$("#chat-content").scrollTop(elm.scrollHeight);
+		var elm = document.getElementById('chat-content');
+		$("#chat-content").scrollTop(elm.scrollHeight);
 	});
 	return false;
 }
@@ -354,7 +358,12 @@ function upVotePost(id, page, type, way) {
 			
 	$.post($url, { id: $id }, function(data) {
 		if (data == 'success')
-			sortPosts(page, type, way);
+		{
+			if (type && way)
+				sortPosts(page, type, way);
+			else
+				updateCommentVote(page);
+		}
 		else
 			login();
 	});
@@ -366,7 +375,12 @@ function downVotePost(id, page, type, way) {
 			
 	$.post($url, { id: $id }, function(data) {
 		if (data == 'success')
-			sortPosts(page, type, way);
+		{
+			if (type && way)
+				sortPosts(page, type, way);
+			else
+				updateCommentVote(page);
+		}
 		else
 			login();
 	});

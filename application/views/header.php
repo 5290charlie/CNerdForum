@@ -20,6 +20,7 @@
 		</div>
 		<div id="sidebar">
 			<div id="chat-container">
+				<div class="info">[scroll down at bottom to "unlock"]</div>
 				<h3>Ghetto Chat</h3>
 				<div id="chat-content">
 				</div>
@@ -30,9 +31,12 @@
 		</div>
 		<div id="container">
 			<div id="userstatus"></div>
-			<div id="header" onclick="window.location='/';">
+			<div id="header" title="Home" onclick="window.location='/';">
+				<img src="/static/images/CNerdForumLogo.png" />
+				<!-- 
 				CNerdForum 
 				<span>[a place for nerds]</span>
+				-->
 			</div>
 			<form id="searchForm" method="post" action="/main/search/">
 				<input name="search" id="search" placeholder="Search CNerdForum…" />

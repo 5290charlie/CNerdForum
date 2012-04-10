@@ -1,5 +1,25 @@
 <a href="/">&lt;&lt; All posts</a>
-<div class="details">
+<br />
+<?
+$upClass = '';
+$downClass = '';
+if ($user) {
+	foreach($vote_list->result() as $r) {
+		if (($r->comment == -1) && ($r->post == $post->id)) {
+			if ($r->value > 0)
+				$upClass = 'class="selected"';
+			else if ($r->value < 0)
+				$downClass = 'class="selected"';
+		}
+	}
+}
+?>
+<div style="width:50px;margin-top:40px;" class="vote">
+	<img src="/static/images/icons/mana.png" onclick="upVotePost('<? echo $post->id; ?>','<? echo $page; ?>')" <? echo $upClass; ?>/><br />
+	<? echo $post->mana; ?><br />
+	<img src="/static/images/icons/bana.png" onclick="downVotePost('<? echo $post->id; ?>','<? echo $page; ?>')" <? echo $downClass; ?>/>
+</div>
+<div style="margin-left:50px;" class="details">
 	<?
 	if ($user) {
 		if (($user->id == $post->user) || $user->admin) {
